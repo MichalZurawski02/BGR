@@ -1,0 +1,2 @@
+# BGR
+BoardGameRanking
