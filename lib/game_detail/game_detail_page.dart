@@ -15,18 +15,14 @@ class GameDetailPage extends StatelessWidget {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Container(
-                  margin: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(30.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Stack(
                         children: [
                           CarouselSlider(
-                            items: [
-                              'https://via.placeholder.com/300',
-                              'https://via.placeholder.com/300',
-                              'https://via.placeholder.com/300',
-                            ].map((item) {
+                            items: viewModel.imageUrls.map((item) {
                               return Container(
                                 decoration: BoxDecoration(
                                   color: Colors.grey,
@@ -64,7 +60,7 @@ class GameDetailPage extends StatelessWidget {
                                       : Colors.transparent,
                                   border: Border.all(
                                     color: viewModel.addedToFavourites
-                                        ? Colors.redAccent // Pink stroke color when clicked
+                                        ? Colors.redAccent
                                         : Colors.grey,
                                     width: 2.0,
                                   ),
@@ -84,7 +80,7 @@ class GameDetailPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16.0),
+                      SizedBox(height: 24.0),
                       Text(
                         viewModel.title,
                         style: TextStyle(
@@ -92,45 +88,56 @@ class GameDetailPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 8.0),
+                      SizedBox(height: 12.0),
                       Row(
                         children: [
                           Icon(
-                            Icons.category,
+                            viewModel.getGenreIcon(),
                             color: Colors.grey,
+                            size: 20.0,
                           ),
                           SizedBox(width: 8.0),
                           Text(
                             viewModel.genre,
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           SizedBox(width: 16.0),
-                          Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          SizedBox(width: 4.0),
-                          Text(
-                            viewModel.rating.toString(),
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                                size: 20.0,
+                              ),
+                              SizedBox(width: 4.0),
+                              Text(
+                                viewModel.rating.toString(),
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                       SizedBox(height: 24.0),
                       Text(
                         viewModel.description,
-                        style: TextStyle(fontSize: 16.0),
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.grey[700],
+                        ),
                       ),
-                      SizedBox(height: 16.0),
+                      SizedBox(height: 32.0),
                       Text(
                         'Rate this game:',
                         style: TextStyle(
                           fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       SizedBox(height: 8.0),
