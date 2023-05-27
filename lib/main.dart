@@ -1,3 +1,7 @@
+import 'package:boardgames/firebase_access_object.dart';
+import 'package:boardgames/pages/favourites/favourites_page.dart';
+import 'package:boardgames/pages/home/home_page.dart';
+import 'package:boardgames/pages/user/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animations/animations.dart';
