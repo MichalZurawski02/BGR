@@ -15,7 +15,7 @@ class GameDetailPage extends StatelessWidget {
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Container(
-                  padding: EdgeInsets.all(30.0),
+                  padding: const EdgeInsets.all(30.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -66,7 +66,7 @@ class GameDetailPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Icon(
                                     Icons.favorite,
                                     color: viewModel.addedToFavourites
@@ -80,7 +80,7 @@ class GameDetailPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 24.0),
+                      const SizedBox(height: 24.0),
                       Text(
                         viewModel.title,
                         style: TextStyle(
@@ -89,7 +89,7 @@ class GameDetailPage extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 12.0),
+                      const SizedBox(height: 12.0),
                       Row(
                         children: [
                           Icon(
@@ -97,7 +97,7 @@ class GameDetailPage extends StatelessWidget {
                             color: Colors.blue,
                             size: 20.0,
                           ),
-                          SizedBox(width: 8.0),
+                          const SizedBox(width: 8.0),
                           Text(
                             viewModel.genre,
                             style: TextStyle(
@@ -106,15 +106,15 @@ class GameDetailPage extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          SizedBox(width: 16.0),
+                          const SizedBox(width: 16.0),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 color: Colors.amber,
                                 size: 20.0,
                               ),
-                              SizedBox(width: 4.0),
+                              const SizedBox(width: 4.0),
                               Text(
                                 viewModel.rating.toString(),
                                 style: TextStyle(
@@ -127,7 +127,7 @@ class GameDetailPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 24.0),
+                      const SizedBox(height: 24.0),
                       Text(
                         viewModel.description,
                         style: TextStyle(
@@ -135,7 +135,7 @@ class GameDetailPage extends StatelessWidget {
                           color: Colors.grey[700],
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Text(
                         'Rate this game:',
                         style: TextStyle(
@@ -144,7 +144,7 @@ class GameDetailPage extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(height: 8.0),
+                      const SizedBox(height: 8.0),
                       RatingBar.builder(
                         initialRating: viewModel.userRating,
                         minRating: 0,
@@ -152,7 +152,7 @@ class GameDetailPage extends StatelessWidget {
                         allowHalfRating: true,
                         itemCount: 10,
                         itemSize: 24.0,
-                        itemBuilder: (context, _) => Icon(
+                        itemBuilder: (context, _) => const Icon(
                           Icons.star,
                           color: Colors.amber,
                         ),

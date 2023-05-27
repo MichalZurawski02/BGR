@@ -13,12 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Set<GameGenre> selectedGenres = {};
 
-  void _onItemTapped() {
-    setState(() {
-      selectedGenres.add(GameGenre.strategy);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomePageViewModel>(
@@ -30,7 +24,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Wrap(
                       spacing: 8.0,
                       runSpacing: 8.0,
@@ -74,37 +68,40 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Expanded(
-                    child: ListView.separated(
-                      itemCount: viewModel.games.length,
-                      separatorBuilder: (context, index) {
-                        final game = viewModel.games[index];
-                        if(selectedGenres.isEmpty || selectedGenres.contains(game.genre)) {
-                          return SizedBox(height: 16.0);
-                        };
-                        return SizedBox(height: 0.0);
-                      },
-                      itemBuilder: (context, index) {
-                        final game = viewModel.games[index];
-                        if (selectedGenres.isEmpty || selectedGenres.contains(game.genre)) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => GameDetailPage(),
-                                ),
-                              );
-                            },
-                            child: ParallaxGameCard(
-                              imageUrl: game.imageUrls[0],
-                              title: game.title,
-                              rating: game.rating,
-                            ),
-                          );
-                        } else {
-                          return Container(); // Return an empty container if the genre is not selected
-                        }
-                      },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: ListView.separated(
+                        itemCount: viewModel.games.length,
+                        separatorBuilder: (context, index) {
+                          final game = viewModel.games[index];
+                          if(selectedGenres.isEmpty || selectedGenres.contains(game.genre)) {
+                            return const SizedBox(height: 16.0);
+                          }
+                          return const SizedBox(height: 0.0);
+                        },
+                        itemBuilder: (context, index) {
+                          final game = viewModel.games[index];
+                          if (selectedGenres.isEmpty || selectedGenres.contains(game.genre)) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GameDetailPage(),
+                                  ),
+                                );
+                              },
+                              child: ParallaxGameCard(
+                                imageUrl: game.imageUrls[0],
+                                title: game.title,
+                                rating: game.rating,
+                              ),
+                            );
+                          } else {
+                            return Container(); // Return an empty container if the genre is not selected
+                          }
+                        },
+                      ),
                     ),
                   ),
                 ],
@@ -125,11 +122,12 @@ class ParallaxGameCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const ParallaxGameCard({
+    Key? key,
     required this.imageUrl,
     required this.title,
     required this.rating,
     this.onTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -139,66 +137,66 @@ class ParallaxGameCard extends StatelessWidget {
       onTap: onTap,
       child: SizedBox(
         height: cardHeight,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.network(
                 imageUrl,
                 fit: BoxFit.cover,
               ),
-            ),
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.transparent, Colors.black54],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+              Positioned.fill(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.transparent, Colors.black54],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 4.0),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                          size: 16.0,
-                        ),
-                        SizedBox(width: 4.0),
-                        Text(
-                          rating.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
+                      const SizedBox(height: 4.0),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                            size: 16.0,
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          const SizedBox(width: 4.0),
+                          Text(
+                            rating.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -13,9 +13,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Color(0xFFFAFAFA),
-        statusBarIconBrightness: Brightness.dark
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+            statusBarColor: Color(0xFFFAFAFA),
+            statusBarIconBrightness: Brightness.dark
     ));
     return MaterialApp(
       home: LoginPage(),
@@ -31,7 +32,8 @@ class MyAppScreen extends StatefulWidget {
 class _MyAppScreenState extends State<MyAppScreen> {
   int _selectedIndex = 1;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions =
+  <Widget>[
     GameDetailPage(),
     HomePage(),
     UserPage(),
