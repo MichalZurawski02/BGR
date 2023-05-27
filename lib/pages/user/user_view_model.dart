@@ -4,9 +4,9 @@ import '../../enums/game_genre.dart';
 
 class UserViewModel extends ChangeNotifier {
   //final UserDAO dao
-  UserState _state = UserState(
+  final UserState _state = UserState(
       username: "User1234",
-      favouriteGenre: GameGenre.logic,
+      favouriteGenre: GameGenre.Abstract,
       numberOfRated: 123,
       numberOfFavourites: 31,
       averageRating: 6.7
@@ -24,15 +24,15 @@ class UserViewModel extends ChangeNotifier {
 
   IconData getGenreIcon() {
     switch (_state.favouriteGenre) {
-      case GameGenre.strategy:
+      case GameGenre.Strategy:
         return Icons.leaderboard;
-      case GameGenre.economics:
+      case GameGenre.Thematic:
         return Icons.paid;
-      case GameGenre.party:
+      case GameGenre.Party:
         return Icons.celebration;
-      case GameGenre.logic:
+      case GameGenre.Abstract:
         return Icons.lightbulb;
-      case GameGenre.family:
+      case GameGenre.Family:
         return Icons.people;
       default:
         return Icons.category;

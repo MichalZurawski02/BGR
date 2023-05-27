@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LogInButton extends StatelessWidget {
   final Function()? onTap;
 
-  const LogInButton({Key? key, required this.onTap});
+  const LogInButton({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class LogInButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         margin: const EdgeInsets.symmetric(horizontal: 35),
-        constraints: BoxConstraints(maxWidth: 150),
+        constraints: const BoxConstraints(maxWidth: 150),
         decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(25),
@@ -73,7 +73,7 @@ class RegisterButtonBig extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         margin: const EdgeInsets.symmetric(horizontal: 35),
-        constraints: BoxConstraints(maxWidth: 150),
+        constraints: const BoxConstraints(maxWidth: 150),
         decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(25),

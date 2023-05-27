@@ -1,6 +1,5 @@
 import 'package:boardgames/enums/game_genre.dart';
 import 'package:boardgames/pages/game_detail/game_detail_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GameDetailViewModel extends ChangeNotifier {
@@ -12,7 +11,7 @@ class GameDetailViewModel extends ChangeNotifier {
           " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      genre: GameGenre.economics,
+      genre: GameGenre.Thematic,
       imageUrls: [
         'https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcT76dKDbC5K-E7hOfDx6Iq2R0omeb2lI6orSIr0U214DFJZ5noCdILi9CurX5n2b9Tr',
         'https://cdn.britannica.com/71/234471-050-093F4211/shiba-inu-dog-in-the-snow.jpg',
@@ -23,7 +22,7 @@ class GameDetailViewModel extends ChangeNotifier {
       addedToFavourites: false
   );
 
-  BoardGameViewModel() {
+  GameDetailViewModel() {
     //stworz _state z dao
   }
 
@@ -65,15 +64,15 @@ class GameDetailViewModel extends ChangeNotifier {
 
   IconData getGenreIcon() {
     switch (_state.genre) {
-      case GameGenre.strategy:
+      case GameGenre.Strategy:
         return Icons.leaderboard;
-      case GameGenre.economics:
+      case GameGenre.Thematic:
         return Icons.paid;
-      case GameGenre.party:
+      case GameGenre.Party:
         return Icons.celebration;
-      case GameGenre.logic:
+      case GameGenre.Abstract:
         return Icons.lightbulb;
-      case GameGenre.family:
+      case GameGenre.Family:
         return Icons.people;
       default:
         return Icons.category;

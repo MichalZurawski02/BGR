@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:boardgames/enums/game_genre.dart';
 
 class GameDetailSimpleState {

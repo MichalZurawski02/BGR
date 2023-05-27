@@ -28,16 +28,52 @@ class GamesState extends State<StatefulWidget> {
                     child: Wrap(
                       spacing: 8.0,
                       runSpacing: 8.0,
-                      children: List<Widget>.generate(GameGenre.values.length, (index) {
-                        final genre = GameGenre.values[index];
-                        final isSelected = selectedGenres.contains(genre);
-                        return GestureDetector(
+                      children: [
+                        for (final genre in GameGenre.values)
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (selectedGenres.contains(genre)) {
+                                  selectedGenres.remove(genre);
+                                } else {
+                                  selectedGenres.add(genre);
+                                }
+                              });
+                            },
+                            child: Container(
+                              width: 100.0,
+                              height: 30.0,
+                              decoration: BoxDecoration(
+                                color: selectedGenres.contains(genre)
+                                    ? Colors.blue.withOpacity(0.5)
+                                    : Colors.transparent,
+                                border: Border.all(
+                                  color: Colors.blue,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  genre.name,
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: selectedGenres.contains(genre)
+                                        ? Colors.white
+                                        : Colors.blue,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        GestureDetector(
                           onTap: () {
                             setState(() {
-                              if (isSelected) {
-                                selectedGenres.remove(genre);
+                              if (vm.sorted) {
+                                vm.refresh();
                               } else {
-                                selectedGenres.add(genre);
+                                vm.sort();
                               }
                             });
                           },
@@ -45,7 +81,9 @@ class GamesState extends State<StatefulWidget> {
                             width: 100.0,
                             height: 30.0,
                             decoration: BoxDecoration(
-                              color: isSelected ? Colors.blue.withOpacity(0.5) : Colors.transparent,
+                              color: vm.sorted
+                                  ? Colors.blue.withOpacity(0.5)
+                                  : Colors.transparent,
                               border: Border.all(
                                 color: Colors.blue,
                                 width: 1.0,
@@ -54,17 +92,19 @@ class GamesState extends State<StatefulWidget> {
                             ),
                             child: Center(
                               child: Text(
-                                genre.name,
+                                "top rated",
                                 style: TextStyle(
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
-                                  color: isSelected ? Colors.white : Colors.blue,
+                                  color: vm.sorted
+                                      ? Colors.white
+                                      : Colors.blue,
                                 ),
                               ),
                             ),
                           ),
-                        );
-                      }),
+                        ),
+                      ],
                     ),
                   ),
                   Expanded(
@@ -87,7 +127,7 @@ class GamesState extends State<StatefulWidget> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => GameDetailPage(),
+                                    builder: (context) => const GameDetailPage(),
                                   ),
                                 );
                               },

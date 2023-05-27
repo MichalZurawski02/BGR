@@ -1,10 +1,11 @@
+import 'package:boardgames/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'user_view_model.dart';
 import 'package:provider/provider.dart';
-import 'package:boardgames/pages/home/home_page.dart';
-import 'package:boardgames/pages/favourites/favourites_page.dart';
 
 class UserPage extends StatelessWidget {
+  const UserPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<UserViewModel>(
@@ -34,7 +35,7 @@ class UserPage extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.blue.withOpacity(0.8),
@@ -51,8 +52,8 @@ class UserPage extends StatelessWidget {
                                 color: Colors.white,
                                 size: 20,
                               ),
-                              SizedBox(width: 5),
-                              Text(
+                              const SizedBox(width: 5),
+                              const Text(
                                 'Your favourite genre:',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -60,10 +61,10 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(
                                 viewModel.favouriteGenre,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -71,16 +72,16 @@ class UserPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 color: Colors.white,
                                 size: 20,
                               ),
-                              SizedBox(width: 5),
-                              Text(
+                              const SizedBox(width: 5),
+                              const Text(
                                 'Games You rated:',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -88,10 +89,10 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(
                                 viewModel.numberOfRated.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -99,16 +100,16 @@ class UserPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.favorite,
                                 color: Colors.white,
                                 size: 20,
                               ),
-                              SizedBox(width: 5),
-                              Text(
+                              const SizedBox(width: 5),
+                              const Text(
                                 'Your favourites:',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -116,10 +117,10 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(
                                 viewModel.numberOfFavourites.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -127,16 +128,16 @@ class UserPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.bar_chart,
                                 color: Colors.white,
                                 size: 20,
                               ),
-                              SizedBox(width: 5),
-                              Text(
+                              const SizedBox(width: 5),
+                              const Text(
                                 'Average Rating:',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -144,10 +145,10 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(
                                 viewModel.averageRating.toStringAsFixed(1),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -158,7 +159,7 @@ class UserPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 28),
+                    const SizedBox(height: 28),
                     Text(
                       "What are You gonna play today?",
                       style: TextStyle(
@@ -167,7 +168,7 @@ class UserPage extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.blue.withOpacity(0.5),
@@ -180,7 +181,7 @@ class UserPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Discover',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -188,8 +189,8 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 5),
-                              Text(
+                              const SizedBox(height: 5),
+                              const Text(
                                 'New Game',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -197,29 +198,28 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    side: BorderSide(color: Colors.white),
-                                  ),
-                                  primary: Colors.transparent,
+                                    side: const BorderSide(color: Colors.white),
+                                  ), backgroundColor: Colors.transparent,
                                   elevation: 0,
                                 ),
-                                icon: Icon(Icons.casino_rounded, color: Colors.white),
-                                label: Text('Random'),
+                                icon: const Icon(Icons.casino_rounded, color: Colors.white),
+                                label: const Text('Random'),
                                 onPressed: () {
                                   // Add your onPressed logic here
                                 },
                               ),
                             ],
                           ),
-                          SizedBox(width: 50),
+                          const SizedBox(width: 50),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Draw one',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -227,8 +227,8 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 5),
-                              Text(
+                              const SizedBox(height: 5),
+                              const Text(
                                 'of your classics',
                                 style: TextStyle(
                                   color: Colors.white,
@@ -236,18 +236,17 @@ class UserPage extends StatelessWidget {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    side: BorderSide(color: Colors.white),
-                                  ),
-                                  primary: Colors.transparent,
+                                    side: const BorderSide(color: Colors.white),
+                                  ), backgroundColor: Colors.transparent,
                                   elevation: 0,
                                 ),
-                                icon: Icon(Icons.favorite, color: Colors.white),
-                                label: Text('Favourite'),
+                                icon: const Icon(Icons.favorite, color: Colors.white),
+                                label: const Text('Favourite'),
                                 onPressed: () {
                                   // Add your onPressed logic here
                                 },
@@ -257,7 +256,7 @@ class UserPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 25),
+                    const SizedBox(height: 25),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -270,7 +269,7 @@ class UserPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -278,37 +277,35 @@ class UserPage extends StatelessWidget {
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(color: Colors.blue),
-                                ),
-                                primary: Colors.transparent,
+                                  side: const BorderSide(color: Colors.blue),
+                                ), backgroundColor: Colors.transparent,
                                 elevation: 0,
                               ),
-                              icon: Icon(Icons.all_inclusive, color: Colors.blue),
-                              label: Text(
+                              icon: const Icon(Icons.all_inclusive, color: Colors.blue),
+                              label: const Text(
                                 'All games',
                                 style: TextStyle(color: Colors.blue),
                               ),
                               onPressed: () {
-                                 Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                                 Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
                               },
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(color: Colors.blue),
-                                ),
-                                primary: Colors.transparent,
+                                  side: const BorderSide(color: Colors.blue),
+                                ), backgroundColor: Colors.transparent,
                                 elevation: 0,
                               ),
-                              icon: Icon(Icons.favorite_border_outlined, color: Colors.blue),
-                              label: Text(
+                              icon: const Icon(Icons.favorite_border_outlined, color: Colors.blue),
+                              label: const Text(
                                 'My favourites',
                                 style: TextStyle(color: Colors.blue),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => FavouritePage())); //change to favorites page
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())); //change to favorites page
                               },
                             ),
                           ],
