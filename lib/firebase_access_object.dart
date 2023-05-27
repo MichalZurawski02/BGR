@@ -80,13 +80,31 @@ class FirebaseDAO {
 
   Future<void> postBoardGame(String title, String description, String genre,
       double rating, String img) async {
-    return _boardGames.doc(title).set({
-      'title': title,
-      'description': description,
-      'genre': genre,
-      'rating': rating,
-      'img': img,
-    });
+    List<String> ids = <String>[];
+    final ratingsRef = _ratings.where("title", isEqualTo: title).withConverter(
+          fromFirestore: RatingDataObject.fromFirestore,
+          toFirestore: (RatingDataObject rating, _) => rating.toFirestore(),
+        );
+    QuerySnapshot<RatingDataObject> querySnapshot = await ratingsRef.get();
+    ids = querySnapshot.docs.map((doc) => doc.id).toList();
+    var id = ids.elementAtOrNull(0);
+    if (id != null) {
+      return _boardGames.doc(id).set({
+        'title': title,
+        'description': description,
+        'genre': genre,
+        'rating': rating,
+        'img': img,
+      });
+    } else {
+      return _boardGames.add({
+        'title': title,
+        'description': description,
+        'genre': genre,
+        'rating': rating,
+        'img': img,
+      }).ignore();
+    }
   }
 
   Future<BoardGameDataObject?> getBoardGameByTitle(String title) async {
@@ -170,21 +188,17 @@ class FirebaseDAO {
 
   Future<void> postRating(
       String title, String username, double rating, bool fav) async {
+    List<String> ids = <String>[];
     final ratingsRef = _ratings.where("title", isEqualTo: title).withConverter(
           fromFirestore: RatingDataObject.fromFirestore,
           toFirestore: (RatingDataObject rating, _) => rating.toFirestore(),
         );
-    String? id;
-    ratingsRef.get().then(
-      (querySnapshot) {
-        for (var docSnapshot in querySnapshot.docs) {
-          if (docSnapshot.data().username == username) {
-            //print('${docSnapshot.id} => ${docSnapshot.data()}');
-            id = docSnapshot.id;
-          }
-        }
-      },
-    );
+    QuerySnapshot<RatingDataObject> querySnapshot = await ratingsRef.get();
+    ids = querySnapshot.docs
+        .where((doc) => doc.data().username == username)
+        .map((doc) => doc.id)
+        .toList();
+    var id = ids.elementAtOrNull(0);
     if (id != null) {
       return _ratings.doc(id).set({
         'title': title,
@@ -266,7 +280,7 @@ class BoardGameDataObject {
 class RatingDataObject {
   final String? title;
   final String? username;
-  final double? rating;
+  final num? rating;
   final bool? fav;
 
   RatingDataObject({this.title, this.username, this.rating, this.fav});

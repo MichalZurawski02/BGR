@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/my_buttons.dart';
-import 'widgets/my_text_field.dart';
+import '../widgets/my_buttons.dart';
+import '../widgets/my_text_field.dart';
 
 class SignUpPage extends StatelessWidget {
   SignUpPage({super.key});
