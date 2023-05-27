@@ -1,5 +1,9 @@
+import 'package:boardgames/pages/favourites/favourites_page_dao.dart';
+import 'package:boardgames/pages/game_detail/game_detail_state.dart';
 import 'package:boardgames/pages/home/home_page.dart';
+import 'package:boardgames/pages/home/home_page_dao.dart';
 import 'package:flutter/material.dart';
+import '../game_detail/game_detail_page.dart';
 import 'user_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -210,7 +214,9 @@ class UserPage extends StatelessWidget {
                                 icon: const Icon(Icons.casino_rounded, color: Colors.white),
                                 label: const Text('Random'),
                                 onPressed: () {
-                                  // Add your onPressed logic here
+                                  //Todo: podpiac tytul po przerobieniu gameDetail
+                                  print(HomePageGamesDAO().getRandom().title);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const GameDetailPage()));
                                 },
                               ),
                             ],
@@ -248,7 +254,9 @@ class UserPage extends StatelessWidget {
                                 icon: const Icon(Icons.favorite, color: Colors.white),
                                 label: const Text('Favourite'),
                                 onPressed: () {
-                                  // Add your onPressed logic here
+                                  //Todo: podpiac tytul po przerobieniu gameDetail
+                                  print(FavouritePageGamesDAO().getRandom().title);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const GameDetailPage()));
                                 },
                               ),
                             ],

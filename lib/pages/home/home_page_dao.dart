@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:boardgames/enums/game_genre.dart';
 import 'package:boardgames/pages/game_dao.dart';
 import 'package:boardgames/pages/game_detail/game_detail_state.dart';
@@ -32,5 +34,11 @@ class HomePageGamesDAO extends GameDAO {
       'https://preview.redd.it/rc36dac8b5hz.jpg?auto=webp&s=52a8807c67a00edf79128d1e12d4d791de569321',
     ],rating: 9));
     return list;
+  }
+  @override
+  GameDetailSimpleState getRandom() {
+    var rand = Random();
+    List<GameDetailSimpleState> list = get();
+    return list[rand.nextInt(list.length)];
   }
 }
