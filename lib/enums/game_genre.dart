@@ -4,5 +4,4 @@ enum GameGenre {
   party,
   logic,
   family
-
 }

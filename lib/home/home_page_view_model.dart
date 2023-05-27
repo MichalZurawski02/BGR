@@ -6,13 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'home_page_state.dart';
 
 class HomePageViewModel extends ChangeNotifier {
-  late HomePageDAO dao;
-  late HomePageState state;
+  late HomePageDAO dao = HomePageDAO();
+  late final HomePageState _state = dao.get();
 
-  HomePageViewModel({required this.dao}):
-    state = dao.get();
-
-  late String sortBy = state.by.toString();
-  late String sortDir = state.direction.toString();
-  late List<GameDetailSimpleState> games = state.games;
+  late String sortBy = _state.by.toString();
+  late String sortDir = _state.direction.toString();
+  late List<GameDetailSimpleState> games = _state.games;
 }
