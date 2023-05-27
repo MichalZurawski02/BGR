@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animations/animations.dart';
 import 'game_detail/game_detail_page.dart';
-import 'home_page.dart';
+import 'home/home_page.dart';
 import 'package:boardgames/user/user_page.dart';
 import 'login_page.dart';
 
@@ -29,7 +29,7 @@ class MyAppScreen extends StatefulWidget {
 }
 
 class _MyAppScreenState extends State<MyAppScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   static List<Widget> _widgetOptions = <Widget>[
     GameDetailPage(),

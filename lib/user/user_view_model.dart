@@ -1,7 +1,6 @@
 import 'package:boardgames/user/user_state.dart';
-import 'package:boardgames/game_genre.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../enums/game_genre.dart';
 
 class UserViewModel extends ChangeNotifier {
   //final UserDAO dao

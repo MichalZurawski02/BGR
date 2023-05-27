@@ -1,4 +1,4 @@
-import 'package:boardgames/game_genre.dart';
+import '../enums/game_genre.dart';
 
 class UserState {
   final String username;
