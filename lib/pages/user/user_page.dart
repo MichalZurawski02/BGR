@@ -1,7 +1,7 @@
+import 'package:boardgames/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'user_view_model.dart';
 import 'package:provider/provider.dart';
-import 'package:boardgames/home/home_page.dart';
 
 class UserPage extends StatelessWidget {
   @override
