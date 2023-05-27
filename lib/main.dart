@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:animations/animations.dart';
 import 'game_detail/game_detail_page.dart';
 import 'home_page.dart';
-import 'user_page.dart';
+import 'package:boardgames/user/user_page.dart';
 import 'login_page.dart';
 
 void main() {
