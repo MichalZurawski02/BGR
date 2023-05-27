@@ -1,22 +1,32 @@
 import 'dart:ffi';
-import 'package:boardgames/game_genre.dart';
+import 'package:boardgames/enums/game_genre.dart';
 
-class GameDetailState {
+class GameDetailSimpleState {
   final String title;
-  final String description;
   final GameGenre genre;
-  final List<String> imageUrls;
   double rating;
+
+  GameDetailSimpleState({
+    required this.title,
+    required this.genre,
+    required this.rating
+  });
+}
+
+class GameDetailState extends GameDetailSimpleState {
+  final String description;
+  final List<String> imageUrls;
   double userRating;
   bool addedToFavourites;
 
   GameDetailState({
-    required this.title,
+    required title,
     required this.description,
-    required this.genre,
+    required genre,
     required this.imageUrls,
-    required this.rating,
+    required rating,
     required this.userRating,
     required this.addedToFavourites
-  });
+  }):
+        super(title: title, genre: genre, rating: rating);
 }

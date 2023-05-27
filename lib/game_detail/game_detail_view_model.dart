@@ -1,5 +1,5 @@
 import 'package:boardgames/game_detail/game_detail_state.dart';
-import 'package:boardgames/game_genre.dart';
+import 'package:boardgames/enums/game_genre.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'game_detail/game_detail_page.dart';
-import 'home_page.dart';
+import 'home/home_page.dart';
 import 'user_page.dart';
 import 'login_page.dart';
 

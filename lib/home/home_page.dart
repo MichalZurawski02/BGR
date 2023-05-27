@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'user_page.dart';
+import '../user_page.dart';
 import 'package:boardgames/game_detail/game_detail_page.dart';
 
 class HomePage extends StatelessWidget {
