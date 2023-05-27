@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:animations/animations.dart';
 import 'game_detail/game_detail_page.dart';
-import 'home/home_page.dart';
-import 'user_page.dart';
+import 'home_page.dart';
+import 'package:boardgames/user/user_page.dart';
 import 'login_page.dart';
 
 void main() {
@@ -12,6 +13,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Color(0xFFFAFAFA),
+        statusBarIconBrightness: Brightness.dark
+    ));
     return MaterialApp(
       home: LoginPage(),
     );

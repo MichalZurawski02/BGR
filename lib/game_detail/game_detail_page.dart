@@ -61,7 +61,7 @@ class GameDetailPage extends StatelessWidget {
                                   border: Border.all(
                                     color: viewModel.addedToFavourites
                                         ? Colors.redAccent
-                                        : Colors.grey,
+                                        : Colors.white,
                                     width: 2.0,
                                   ),
                                 ),
@@ -71,7 +71,7 @@ class GameDetailPage extends StatelessWidget {
                                     Icons.favorite,
                                     color: viewModel.addedToFavourites
                                         ? Colors.white
-                                        : Colors.grey,
+                                        : Colors.white,
                                     size: 20.0,
                                   ),
                                 ),
@@ -84,8 +84,9 @@ class GameDetailPage extends StatelessWidget {
                       Text(
                         viewModel.title,
                         style: TextStyle(
+                          color: Colors.grey[700],
                           fontSize: 24.0,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(height: 12.0),
@@ -93,13 +94,14 @@ class GameDetailPage extends StatelessWidget {
                         children: [
                           Icon(
                             viewModel.getGenreIcon(),
-                            color: Colors.grey,
+                            color: Colors.blue,
                             size: 20.0,
                           ),
                           SizedBox(width: 8.0),
                           Text(
                             viewModel.genre,
                             style: TextStyle(
+                              color: Colors.grey[700],
                               fontSize: 16.0,
                               fontWeight: FontWeight.w500,
                             ),
@@ -116,6 +118,7 @@ class GameDetailPage extends StatelessWidget {
                               Text(
                                 viewModel.rating.toString(),
                                 style: TextStyle(
+                                  color: Colors.grey[700],
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -136,6 +139,7 @@ class GameDetailPage extends StatelessWidget {
                       Text(
                         'Rate this game:',
                         style: TextStyle(
+                          color: Colors.grey[700],
                           fontSize: 18.0,
                           fontWeight: FontWeight.w500,
                         ),
