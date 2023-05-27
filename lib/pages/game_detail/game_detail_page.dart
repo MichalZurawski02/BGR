@@ -5,12 +5,13 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'game_detail_view_model.dart';
 
 class GameDetailPage extends StatelessWidget {
-  const GameDetailPage({super.key});
+  String game = "";
+  GameDetailPage( {required String this.game});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<GameDetailViewModel>(
-      create: (_) => GameDetailViewModel(),
+      create: (_) => GameDetailViewModel(game: game),
       child: Consumer<GameDetailViewModel>(
         builder: (context, viewModel, _) {
           return Scaffold(
