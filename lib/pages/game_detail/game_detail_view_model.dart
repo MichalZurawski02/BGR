@@ -1,9 +1,13 @@
 import 'package:boardgames/enums/game_genre.dart';
+import 'package:boardgames/pages/game_detail/game_detail_dao.dart';
 import 'package:boardgames/pages/game_detail/game_detail_state.dart';
 import 'package:flutter/material.dart';
 
 class GameDetailViewModel extends ChangeNotifier {
-  //final GameDAO dao
+  String game = "";
+  GameDetailDAO? dao;
+
+
   GameDetailState _state = GameDetailState(
       title: "default board game",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
@@ -22,8 +26,11 @@ class GameDetailViewModel extends ChangeNotifier {
       addedToFavourites: false
   );
 
-  GameDetailViewModel() {
-    //stworz _state z dao
+  GameDetailViewModel({
+    required this.game}) {
+
+    dao = GameDetailDAO(title: game);
+    _state = dao!.getState();
   }
 
   String get title => _state.title;
@@ -45,7 +52,7 @@ class GameDetailViewModel extends ChangeNotifier {
         addedToFavourites: _state.addedToFavourites
     );
     notifyListeners();
-    //dao.upsertUserRating(newRating)
+    dao!.addUserRating(newRating);
   }
 
   void updateFavourites(bool addedToFavourites) {
@@ -59,7 +66,7 @@ class GameDetailViewModel extends ChangeNotifier {
         addedToFavourites: addedToFavourites
     );
     notifyListeners();
-    //dao.upsertNewFavourite(...)
+    dao!.addNewFavourite(addedToFavourites);
   }
 
   IconData getGenreIcon() {

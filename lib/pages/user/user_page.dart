@@ -214,9 +214,7 @@ class UserPage extends StatelessWidget {
                                 icon: const Icon(Icons.casino_rounded, color: Colors.white),
                                 label: const Text('Random'),
                                 onPressed: () {
-                                  //Todo: podpiac tytul po przerobieniu gameDetail
-                                  print(HomePageGamesDAO().getRandom().title);
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const GameDetailPage()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameDetailPage(game: HomePageGamesDAO().getRandom().title )));
                                 },
                               ),
                             ],
@@ -254,9 +252,7 @@ class UserPage extends StatelessWidget {
                                 icon: const Icon(Icons.favorite, color: Colors.white),
                                 label: const Text('Favourite'),
                                 onPressed: () {
-                                  //Todo: podpiac tytul po przerobieniu gameDetail
-                                  print(FavouritePageGamesDAO().getRandom().title);
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const GameDetailPage()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameDetailPage(game: FavouritePageGamesDAO().getRandom().title)));
                                 },
                               ),
                             ],
