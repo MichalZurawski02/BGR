@@ -1,17 +1,28 @@
+import 'package:boardgames/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import '../widgets/my_buttons.dart';
 import '../widgets/my_text_field.dart';
+import 'package:boardgames/firebase_access_object.dart';
 
 class SignUpPage extends StatelessWidget {
   SignUpPage({super.key});
 
+  final FirebaseDAO firebaseDAO = FirebaseDAO();
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserUp() {
-
+  // sign user up method
+  Future<void> signUserUp(context) async {
+    try {
+      await firebaseDAO.postUser(usernameController.text, passwordController.text);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage())
+      );      
+    }
+    catch (e) {
+    }
   }
 
   @override
@@ -74,7 +85,7 @@ class SignUpPage extends StatelessWidget {
           
                 // sign in button
                 RegisterButtonBig(
-                  onTap: signUserUp,
+                  onTap: () => signUserUp(context),
                 ),
           
                 const SizedBox(height: 90),
