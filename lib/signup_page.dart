@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'signup_page.dart';
 import 'widgets/my_buttons.dart';
 import 'widgets/my_text_field.dart';
-import 'main.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class SignUpPage extends StatelessWidget {
+  SignUpPage({super.key});
 
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
   // sign user in method
-  void signUserIn() {
+  void signUserUp() {
 
   }
 
@@ -26,67 +24,69 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
-
-                // logo
+          
                 const Icon(
                   Icons.casino_rounded,
                   size: 50,
                   color: Colors.blue
                 ),
-
+          
                 const SizedBox(height: 30),
-
+          
                 Text(
-                  'Welcome back!',
+                  'Register now',
                   style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 46,
-                    fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold,
                   ),
                 ),
 
-                const SizedBox(height: 45),
+                const SizedBox(height: 25),
 
+                Text(
+                  'Please enter your credentials:',
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 14,
+                  )
+                ),
+          
+                const SizedBox(height: 15),
+          
                 // username textfield
                 MyTextField(
                   controller: usernameController,
                   hintText: 'Username',
                   obscureText: false,
                 ),
-
+          
                 const SizedBox(height: 20),
-
+          
                 // password textfield
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
                 ),
-
+          
                 const SizedBox(height: 35),
-
+          
                 // sign in button
-                LogInButton(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => MyAppScreen())
-                    );
-                  }),
-
+                RegisterButtonBig(
+                  onTap: signUserUp,
+                ),
+          
                 const SizedBox(height: 90),
-
-                // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a member?',
+                      'or go back and',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
-                    const SizedBox(width: 4),
-                    RegisterButton(onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                    GoBackToLogButton(onTap: (){
+                      Navigator.of(context).pop();
                     }),
                   ],
                 )

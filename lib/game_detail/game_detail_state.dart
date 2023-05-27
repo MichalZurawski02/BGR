@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:boardgames/game_genre.dart';
 
 class GameDetailState {
