@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "1088762256811",
+    "firebase_url": "https://boardgameranking-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "boardgameranking",
+    "storage_bucket": "boardgameranking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088762256811:android:8b226ab8d45b1345b586ee",
+        "android_client_info": {
+          "package_name": "com.example.bgr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088762256811-thajqk4ui5ou8k7vdv9ql4t4k1e5hktn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw_yg419QSrlRCPnbTrKQNektsPiGCubI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088762256811-thajqk4ui5ou8k7vdv9ql4t4k1e5hktn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1088762256811-n9fbq1npnenvcem9r2u7vgk4efhj9oei.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bgr"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088762256811:android:50d292a5a3396cf9b586ee",
+        "android_client_info": {
+          "package_name": "com.example.boardgames"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088762256811-thajqk4ui5ou8k7vdv9ql4t4k1e5hktn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw_yg419QSrlRCPnbTrKQNektsPiGCubI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088762256811-thajqk4ui5ou8k7vdv9ql4t4k1e5hktn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1088762256811-n9fbq1npnenvcem9r2u7vgk4efhj9oei.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bgr"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
