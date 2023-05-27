@@ -1,10 +1,10 @@
+import 'package:boardgames/pages/favourites/favourites_page.dart';
+import 'package:boardgames/pages/home/home_page.dart';
+import 'package:boardgames/pages/user/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animations/animations.dart';
-import 'game_detail/game_detail_page.dart';
-import 'home/home_page.dart';
-import 'package:boardgames/user/user_page.dart';
-import 'login_page.dart';
+import 'pages/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +34,7 @@ class _MyAppScreenState extends State<MyAppScreen> {
 
   static final List<Widget> _widgetOptions =
   <Widget>[
-    GameDetailPage(),
+    FavouritePage(),
     HomePage(),
     UserPage(),
   ];

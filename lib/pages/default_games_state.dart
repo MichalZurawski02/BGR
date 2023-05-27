@@ -1,23 +1,23 @@
 import 'package:boardgames/enums/game_genre.dart';
+import 'package:boardgames/pages/game_detail/game_detail_page.dart';
+import 'package:boardgames/pages/games_view_model.dart';
+import 'package:boardgames/widgets/parallax_game_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../game_detail/game_detail_page.dart';
-import 'home_page_view_model.dart';
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class GamesState extends State<StatefulWidget> {
   Set<GameGenre> selectedGenres = {};
+  late GamesViewModel vm;
+
+  GamesState(GamesViewModel viewModel) {
+    vm = viewModel;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<HomePageViewModel>(
-      create: (_) => HomePageViewModel(),
-      child: Consumer<HomePageViewModel>(
+    return ChangeNotifierProvider<GamesViewModel>(
+      create: (_) => vm,
+      child: Consumer<GamesViewModel>(
         builder: (context, viewModel, _) {
           return Scaffold(
             body: SafeArea(
@@ -71,16 +71,16 @@ class _HomePageState extends State<HomePage> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: ListView.separated(
-                        itemCount: viewModel.games.length,
+                        itemCount: viewModel.get().length,
                         separatorBuilder: (context, index) {
-                          final game = viewModel.games[index];
+                          final game = viewModel.get()[index];
                           if(selectedGenres.isEmpty || selectedGenres.contains(game.genre)) {
                             return const SizedBox(height: 16.0);
                           }
                           return const SizedBox(height: 0.0);
                         },
                         itemBuilder: (context, index) {
-                          final game = viewModel.games[index];
+                          final game = viewModel.get()[index];
                           if (selectedGenres.isEmpty || selectedGenres.contains(game.genre)) {
                             return GestureDetector(
                               onTap: () {
@@ -109,95 +109,6 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-
-class ParallaxGameCard extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final double rating;
-  final VoidCallback? onTap;
-
-  const ParallaxGameCard({
-    Key? key,
-    required this.imageUrl,
-    required this.title,
-    required this.rating,
-    this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    const double cardHeight = 150.0; // Adjust the card height as needed
-
-    return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        height: cardHeight,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-              ),
-              Positioned.fill(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.transparent, Colors.black54],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4.0),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 16.0,
-                          ),
-                          const SizedBox(width: 4.0),
-                          Text(
-                            rating.toString(),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

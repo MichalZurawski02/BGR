@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'signup_page.dart';
-import 'widgets/my_buttons.dart';
-import 'widgets/my_text_field.dart';
-import 'main.dart';
+import '../widgets/my_buttons.dart';
+import '../widgets/my_text_field.dart';
+import '../main.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
