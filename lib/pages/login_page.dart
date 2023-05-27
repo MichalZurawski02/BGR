@@ -5,9 +5,11 @@ import '../widgets/my_text_field.dart';
 import '../main.dart';
 import 'package:boardgames/firebase_access_object.dart';
 
+import 'package:boardgames/globals.dart' as globals;
+
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
-  
+
   final FirebaseDAO firebaseDAO = FirebaseDAO();
   // text editing controllers
   final usernameController = TextEditingController();
@@ -16,14 +18,14 @@ class LoginPage extends StatelessWidget {
   // sign user in method
   Future<void> signUserIn(context) async {
     try {
-    if (await firebaseDAO.authUser(usernameController.text, passwordController.text) == true) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MyAppScreen())
-      );      
-    } }
-    catch (e) {
-    }
+      if (await firebaseDAO.authUser(
+              usernameController.text, passwordController.text) ==
+          true) {
+        globals.username = usernameController.text;
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const MyAppScreen()));
+      }
+    } catch (e) {}
   }
 
   @override
@@ -38,11 +40,7 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 50),
 
                 // logo
-                const Icon(
-                  Icons.casino_rounded,
-                  size: 50,
-                  color: Colors.blue
-                ),
+                const Icon(Icons.casino_rounded, size: 50, color: Colors.blue),
 
                 const SizedBox(height: 30),
 
@@ -76,10 +74,9 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 35),
 
                 // sign in button
-                LogInButton(
-                  onTap: () {
-                    signUserIn(context);
-                  }),
+                LogInButton(onTap: () {
+                  signUserIn(context);
+                }),
 
                 const SizedBox(height: 90),
 
@@ -93,7 +90,10 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     RegisterButton(onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpPage()));
                     }),
                   ],
                 )
