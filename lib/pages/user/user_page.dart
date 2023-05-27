@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'user_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:boardgames/home/home_page.dart';
 
 class UserPage extends StatelessWidget {
   @override
@@ -287,7 +288,7 @@ class UserPage extends StatelessWidget {
                                 style: TextStyle(color: Colors.blue),
                               ),
                               onPressed: () {
-                                // Add your onPressed logic here
+                                 Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                               },
                             ),
                             SizedBox(width: 20),
@@ -306,7 +307,7 @@ class UserPage extends StatelessWidget {
                                 style: TextStyle(color: Colors.blue),
                               ),
                               onPressed: () {
-                                // Add your onPressed logic here
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage())); //change to favorites page
                               },
                             ),
                           ],
