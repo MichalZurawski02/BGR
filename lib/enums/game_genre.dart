@@ -1,7 +1,9 @@
+// ignore_for_file: constant_identifier_names
+
 enum GameGenre {
-  strategy,
-  economics,
-  party,
-  logic,
-  family
+  Strategy,
+  Thematic,
+  Party,
+  Abstract,
+  Family
 }

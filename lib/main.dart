@@ -17,10 +17,12 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -33,7 +35,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppScreen extends StatefulWidget {
+  const MyAppScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MyAppScreenState createState() => _MyAppScreenState();
 }
 
@@ -42,9 +47,9 @@ class _MyAppScreenState extends State<MyAppScreen> {
 
   static final List<Widget> _widgetOptions =
   <Widget>[
-    FavouritePage(),
-    HomePage(),
-    UserPage(),
+    const FavouritePage(),
+    const HomePage(),
+    const UserPage(),
   ];
 
   void _onItemTapped(int index) {

@@ -127,7 +127,7 @@ class GamesState extends State<StatefulWidget> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => GameDetailPage(),
+                                    builder: (context) => const GameDetailPage(),
                                   ),
                                 );
                               },

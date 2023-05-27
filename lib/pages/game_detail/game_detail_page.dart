@@ -5,6 +5,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'game_detail_view_model.dart';
 
 class GameDetailPage extends StatelessWidget {
+  const GameDetailPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<GameDetailViewModel>(
@@ -51,7 +53,7 @@ class GameDetailPage extends StatelessWidget {
                                 );
                               },
                               child: AnimatedContainer(
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,

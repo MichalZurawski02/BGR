@@ -1,4 +1,0 @@
-enum SortDirection {
-  ascending,
-  descending
-}
