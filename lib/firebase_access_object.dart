@@ -107,7 +107,7 @@ class FirebaseDAO {
     }
   }
 
-  Future<BoardGameDataObject?> getBoardGameByTitle(String title) async {
+  Future<BoardGameDataObject> getBoardGameByTitle(String title) async {
     List<BoardGameDataObject> boardGames = <BoardGameDataObject>[];
     final boardGamesRef =
         _boardGames.where("title", isEqualTo: title).withConverter(
@@ -200,20 +200,30 @@ class FirebaseDAO {
         .toList();
     var id = ids.elementAtOrNull(0);
     if (id != null) {
-      return _ratings.doc(id).set({
+      _ratings.doc(id).set({
         'title': title,
         'username': username,
         'rating': rating,
         'fav': fav,
       });
     } else {
-      return _ratings.add({
+      _ratings.add({
         "title": title,
         "username": username,
         "rating": rating,
         'fav': fav,
       }).ignore();
     }
+    //updateing rating of a game
+    var ratings = await getRatingsByTitle(title);
+    num sum = 0;
+    for (RatingDataObject rating in ratings) {
+      sum += rating.rating!;
+    }
+    var newRating = sum / ratings.length;
+    var game = await getBoardGameByTitle(title);
+    postBoardGame(
+        game.title!, game.description!, game.genre!, newRating, game.img!);
   }
 }
 
