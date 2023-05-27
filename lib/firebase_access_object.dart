@@ -155,6 +155,52 @@ class FirebaseDAO {
     return ratings;
   }
 
+  Future<num> getRating(String username, String title) async {
+    List<RatingDataObject> ratings = <RatingDataObject>[];
+    final ratingsRef =
+        _ratings.where("username", isEqualTo: username).withConverter(
+              fromFirestore: RatingDataObject.fromFirestore,
+              toFirestore: (RatingDataObject rating, _) => rating.toFirestore(),
+            );
+
+    QuerySnapshot querySnapshot = await ratingsRef.get();
+    ratings = querySnapshot.docs
+        .map((doc) => doc.data())
+        .cast<RatingDataObject>()
+        .toList();
+
+    num r = 0;
+    for (var rating in ratings) {
+      if (rating.title == title) {
+        r = rating.rating!;
+      }
+    }
+    return r;
+  }
+
+  Future<bool> isFav(String username, String title) async {
+    List<RatingDataObject> ratings = <RatingDataObject>[];
+    final ratingsRef =
+        _ratings.where("username", isEqualTo: username).withConverter(
+              fromFirestore: RatingDataObject.fromFirestore,
+              toFirestore: (RatingDataObject rating, _) => rating.toFirestore(),
+            );
+
+    QuerySnapshot querySnapshot = await ratingsRef.get();
+    ratings = querySnapshot.docs
+        .map((doc) => doc.data())
+        .cast<RatingDataObject>()
+        .toList();
+
+    bool fav = false;
+    for (var rating in ratings) {
+      if (rating.title == title) {
+        fav = rating.fav!;
+      }
+    }
+    return fav;
+  }
+
   Future<List<RatingDataObject>> getRatingsByUsername(String username) async {
     List<RatingDataObject> ratings = <RatingDataObject>[];
     final ratingsRef =
