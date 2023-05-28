@@ -2,15 +2,15 @@ import 'dart:math';
 import 'package:boardgames/enums/game_genre.dart';
 import 'package:boardgames/pages/game_dao.dart';
 import 'package:boardgames/pages/game_detail/game_detail_state.dart';
+import 'package:boardgames/globals.dart' as global;
 
 class FavouritePageGamesDAO extends GameDAO {
-
   @override
   Future<List<GameDetailSimpleState>> get() async {
-    final games = await firebaseDAO.getBoardGames();
-    //TODO: REPLACE WITH firebaseDAO.getFavBoardGames(user);
+    final games = await firebaseDAO.getFavBoardGames(global.username);
 
-    final gameList = await Future.wait(games.map((game) => fetchGameDetailState(game.title!)));
+    final gameList = await Future.wait(
+        games.map((game) => fetchGameDetailState(game.title!)));
 
     return gameList;
   }

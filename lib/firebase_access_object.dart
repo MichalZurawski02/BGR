@@ -140,6 +140,26 @@ class FirebaseDAO {
     return boardGames;
   }
 
+  Future<List<BoardGameDataObject>> getFavBoardGames(String username) async {
+    List<BoardGameDataObject> boardGames = <BoardGameDataObject>[];
+    var ratings = await getRatingsByUsername(username);
+
+    var titles = <String>[];
+    for (var rating in ratings) {
+      if (rating.fav!) {
+        titles.add(rating.title!);
+      }
+    }
+
+    for (var title in titles) {
+      try {
+        var boardGame = await getBoardGameByTitle(title);
+        boardGames.add(boardGame);
+      } catch (e) {}
+    }
+    return boardGames;
+  }
+
   Future<List<RatingDataObject>> getRatings() async {
     List<RatingDataObject> ratings = <RatingDataObject>[];
     final ratingsRef = _ratings.withConverter(
@@ -267,9 +287,31 @@ class FirebaseDAO {
       sum += rating.rating!;
     }
     var newRating = sum / ratings.length;
-    var game = await getBoardGameByTitle(title);
-    postBoardGame(
-        game.title!, game.description!, game.genre!, newRating, game.img!);
+
+    _boardGames
+        .where("title", isEqualTo: title)
+        .withConverter(
+          fromFirestore: RatingDataObject.fromFirestore,
+          toFirestore: (RatingDataObject rating, _) => rating.toFirestore(),
+        )
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      if (querySnapshot.docs.isNotEmpty) {
+        querySnapshot.docs.forEach((QueryDocumentSnapshot doc) {
+          doc.reference.update({
+            'rating': newRating,
+          }).then((_) {
+            print('Document updated successfully.');
+          }).catchError((error) {
+            print('Error updating document: $error');
+          });
+        });
+      } else {
+        print('No documents found.');
+      }
+    }).catchError((error) {
+      print('Error retrieving documents: $error');
+    });
   }
 }
 
