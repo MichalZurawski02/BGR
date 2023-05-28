@@ -1,5 +1,4 @@
 import 'package:boardgames/pages/favourites/favourites_page_dao.dart';
-import 'package:boardgames/pages/game_detail/game_detail_state.dart';
 import 'package:boardgames/pages/home/home_page.dart';
 import 'package:boardgames/pages/home/home_page_dao.dart';
 import 'package:flutter/material.dart';

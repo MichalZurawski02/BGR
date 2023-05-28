@@ -6,32 +6,38 @@ import 'package:boardgames/globals.dart';
 class GameDetailDAO {
   final String title;
   String description = "";
-  String user = "";
+  String user = username;
   String genre = "";
   double rating = 0;
   double userRating = 0;
   bool isFavourite = false;
+  GameDetailState? state = null;
 
   final firebaseDAO = FirebaseDAO();
 
   GameDetailDAO({
     required this.title,
-  });
-
-  Future getData() async {
-    await  firebaseDAO.getBoardGameByTitle(title).then( (snapshot) => {
-      description = snapshot.description!,
-      genre = snapshot.genre!,
-      rating = snapshot.rating!.toDouble(),
-
-    } );
+  }) {
+    getData();
   }
 
-  GameDetailState getState()  {
+  Future<void> getData() async {
+    final snapshot = await firebaseDAO.getBoardGameByTitle(title);
+    description = snapshot.description!;
+    genre = snapshot.genre!;
+    rating = snapshot.rating!.toDouble();
 
-    user = username;
+    final userRatingSnapshot = await firebaseDAO.getRating(user, title);
+    userRating = userRatingSnapshot.toDouble();
 
-    return GameDetailState(
+    final isFavouriteSnapshot = await firebaseDAO.isFav(user, title);
+    isFavourite = isFavouriteSnapshot;
+
+    print('Description: ${snapshot.description}');
+    print('Genre: ${snapshot.genre}');
+    print('Rating: ${snapshot.rating}');
+
+    state = GameDetailState(
       title: title,
       description: description,
       genre: getGenreFromString(genre),
@@ -44,6 +50,10 @@ class GameDetailDAO {
       userRating: 0.0,
       addedToFavourites: true,
     );
+  }
+
+  Future<GameDetailState?> getState() async {
+    return state;
   }
 
   void addUserRating(double newRating) {
