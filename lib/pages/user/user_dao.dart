@@ -24,13 +24,15 @@ class UserDAO {
   Future<void> getData() async {
     _GenreCounter genreCounter = _GenreCounter();
     final snapshot = await db.getRatingsByUsername(globals.username);
+    final games = await db.getFavBoardGames(globals.username);
+
     for (RatingDataObject rating in snapshot) {
       if (rating.fav!) {
         try {
           var bg = await db.getBoardGameByTitle(rating.title!);
           genreCounter.updateCounter(bg.genre!);
         } catch (e) {}
-        numberOfFavourites += 1;
+        //numberOfFavourites += 1;
       }
       averageRating += rating.rating!;
     }
@@ -41,7 +43,7 @@ class UserDAO {
         username: name,
         favouriteGenre: GameGenre.Abstract,
         numberOfRated: numberOfRated,
-        numberOfFavourites: numberOfFavourites,
+        numberOfFavourites: games.length,
         averageRating: averageRating);
   }
 
