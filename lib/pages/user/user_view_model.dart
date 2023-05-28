@@ -1,19 +1,30 @@
+import 'package:boardgames/pages/user/user_dao.dart';
 import 'package:boardgames/pages/user/user_state.dart';
 import 'package:flutter/material.dart';
 import '../../enums/game_genre.dart';
 
 class UserViewModel extends ChangeNotifier {
-  //final UserDAO dao
-  final UserState _state = UserState(
+  UserDAO? _dao;
+  UserState _state = UserState(
       username: "User1234",
       favouriteGenre: GameGenre.Abstract,
       numberOfRated: 123,
       numberOfFavourites: 31,
-      averageRating: 6.7
-  );
+      averageRating: 6.7);
 
   UserViewModel() {
-    //stworz _state z dao
+    _dao = UserDAO();
+    _loadUser();
+  }
+
+  Future<void> _loadUser() async {
+    await _dao?.getData();
+    final state = await _dao?.getUserState();
+    //print('Loaded State: $state');
+    if (state != null) {
+      _state = state;
+      notifyListeners();
+    }
   }
 
   String get username => _state.username;

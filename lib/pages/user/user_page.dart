@@ -7,7 +7,7 @@ import 'user_view_model.dart';
 import 'package:provider/provider.dart';
 
 class UserPage extends StatelessWidget {
-  const UserPage({super.key});
+  UserPage();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,8 @@ class UserPage extends StatelessWidget {
           return Scaffold(
             body: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -207,13 +208,21 @@ class UserPage extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     side: const BorderSide(color: Colors.white),
-                                  ), backgroundColor: Colors.transparent,
+                                  ),
+                                  backgroundColor: Colors.transparent,
                                   elevation: 0,
                                 ),
-                                icon: const Icon(Icons.casino_rounded, color: Colors.white),
+                                icon: const Icon(Icons.casino_rounded,
+                                    color: Colors.white),
                                 label: const Text('Random'),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameDetailPage(game: HomePageGamesDAO().getRandom().title )));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => GameDetailPage(
+                                              game: HomePageGamesDAO()
+                                                  .getRandom()
+                                                  .title)));
                                 },
                               ),
                             ],
@@ -245,13 +254,21 @@ class UserPage extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     side: const BorderSide(color: Colors.white),
-                                  ), backgroundColor: Colors.transparent,
+                                  ),
+                                  backgroundColor: Colors.transparent,
                                   elevation: 0,
                                 ),
-                                icon: const Icon(Icons.favorite, color: Colors.white),
+                                icon: const Icon(Icons.favorite,
+                                    color: Colors.white),
                                 label: const Text('Favourite'),
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameDetailPage(game: FavouritePageGamesDAO().getRandom().title)));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => GameDetailPage(
+                                              game: FavouritePageGamesDAO()
+                                                  .getRandom()
+                                                  .title)));
                                 },
                               ),
                             ],
@@ -281,16 +298,22 @@ class UserPage extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   side: const BorderSide(color: Colors.blue),
-                                ), backgroundColor: Colors.transparent,
+                                ),
+                                backgroundColor: Colors.transparent,
                                 elevation: 0,
                               ),
-                              icon: const Icon(Icons.all_inclusive, color: Colors.blue),
+                              icon: const Icon(Icons.all_inclusive,
+                                  color: Colors.blue),
                               label: const Text(
                                 'All games',
                                 style: TextStyle(color: Colors.blue),
                               ),
                               onPressed: () {
-                                 Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage()));
                               },
                             ),
                             const SizedBox(width: 20),
@@ -299,16 +322,22 @@ class UserPage extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   side: const BorderSide(color: Colors.blue),
-                                ), backgroundColor: Colors.transparent,
+                                ),
+                                backgroundColor: Colors.transparent,
                                 elevation: 0,
                               ),
-                              icon: const Icon(Icons.favorite_border_outlined, color: Colors.blue),
+                              icon: const Icon(Icons.favorite_border_outlined,
+                                  color: Colors.blue),
                               label: const Text(
                                 'My favourites',
                                 style: TextStyle(color: Colors.blue),
                               ),
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())); //change to favorites page
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage())); //change to favorites page
                               },
                             ),
                           ],

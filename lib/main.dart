@@ -45,11 +45,10 @@ class MyAppScreen extends StatefulWidget {
 class _MyAppScreenState extends State<MyAppScreen> {
   int _selectedIndex = 1;
 
-  static final List<Widget> _widgetOptions =
-  <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     const FavouritePage(),
     const HomePage(),
-    const UserPage(),
+    UserPage(),
   ];
 
   void _onItemTapped(int index) {
