@@ -25,6 +25,9 @@ class LoginPage extends StatelessWidget {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const MyAppScreen()));
       }
+      else { 
+        _showDialog(context);
+      }
     } catch (e) {
       _showDialog(context);
     }
