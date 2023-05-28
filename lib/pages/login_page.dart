@@ -25,7 +25,35 @@ class LoginPage extends StatelessWidget {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const MyAppScreen()));
       }
-    } catch (e) {}
+    } catch (e) {
+      _showDialog(context);
+    }
+  }
+
+  void _showDialog(context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Login failed'),
+          content: const Text('Incorrect username or password. Please try again.'),
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                'OK', 
+                style: TextStyle(
+                color: Colors.blue,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                )),
+              ),
+          ]
+        );
+      },
+    );
   }
 
   @override

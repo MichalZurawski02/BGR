@@ -22,7 +22,34 @@ class SignUpPage extends StatelessWidget {
       );      
     }
     catch (e) {
+      _showDialog(context);
     }
+  }
+
+  void _showDialog(context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Registration failed'),
+          content: const Text('The username has already been taken.'),
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                'OK', 
+                style: TextStyle(
+                color: Colors.blue,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                )),
+              ),
+          ]
+        );
+      },
+    );
   }
 
   @override
