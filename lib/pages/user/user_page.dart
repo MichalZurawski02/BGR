@@ -1,8 +1,5 @@
-import 'package:boardgames/pages/favourites/favourites_page_dao.dart';
 import 'package:boardgames/pages/home/home_page.dart';
-import 'package:boardgames/pages/home/home_page_dao.dart';
 import 'package:flutter/material.dart';
-import '../game_detail/game_detail_page.dart';
 import 'user_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -216,14 +213,14 @@ class UserPage extends StatelessWidget {
                                     color: Colors.white),
                                 label: const Text('Random'),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => GameDetailPage(
-                                              game: HomePageGamesDAO()
-                                                  .getRandom()
-                                                  .title)));
-                                },
+                                //   Navigator.push(
+                                //       context,
+                                //       MaterialPageRoute(
+                                //           builder: (context) => GameDetailPage(
+                                //               game: HomePageGamesDAO()
+                                //                   .getRandom()
+                                //                   .title)));
+                                 },
                               ),
                             ],
                           ),
@@ -262,13 +259,13 @@ class UserPage extends StatelessWidget {
                                     color: Colors.white),
                                 label: const Text('Favourite'),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => GameDetailPage(
-                                              game: FavouritePageGamesDAO()
-                                                  .getRandom()
-                                                  .title)));
+                                  // Navigator.push(
+                                      // context,
+                                      // MaterialPageRoute(
+                                      //     builder: (context) => GameDetailPage(
+                                      //         game: FavouritePageGamesDAO()
+                                      //             .getRandom()
+                                      //             .title)));
                                 },
                               ),
                             ],

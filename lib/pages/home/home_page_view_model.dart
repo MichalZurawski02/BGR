@@ -4,5 +4,6 @@ import 'package:boardgames/pages/home/home_page_dao.dart';
 class HomePageGamesViewModel extends GamesViewModel {
   HomePageGamesViewModel() {
     dao = HomePageGamesDAO();
+    refresh();
   }
 }

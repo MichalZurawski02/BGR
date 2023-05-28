@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 abstract class GamesViewModel extends ChangeNotifier {
   bool sorted = false;
   late GameDAO dao;
-  late List<GameDetailSimpleState> _games = dao.get();
+  late List<GameDetailSimpleState> _games = [];
 
   List<GameDetailSimpleState> get() {
     return _games;
@@ -15,9 +15,11 @@ abstract class GamesViewModel extends ChangeNotifier {
     _games.sort((b, a) => a.rating.compareTo(b.rating));
     notifyListeners();
   }
-  void refresh() {
-    sorted = false;
-    _games = dao.get();
+
+  Future<void> refresh() async {
+    await dao.get();
+    final state = await dao.get();
+    _games = state;
     notifyListeners();
   }
 }

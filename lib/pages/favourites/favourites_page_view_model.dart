@@ -4,5 +4,6 @@ import 'package:boardgames/pages/games_view_model.dart';
 class FavouritePageGamesViewModel extends GamesViewModel {
   FavouritePageGamesViewModel() {
     dao = FavouritePageGamesDAO();
+    refresh();
   }
 }

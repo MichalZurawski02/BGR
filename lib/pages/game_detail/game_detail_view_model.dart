@@ -29,7 +29,6 @@ class GameDetailViewModel extends ChangeNotifier {
   Future<void> _loadGameDetail() async {
     await _dao?.getData();
     final state = await _dao?.getState();
-    print('Loaded State: $state');
     if (state != null) {
       _state = state;
       notifyListeners();

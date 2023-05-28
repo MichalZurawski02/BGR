@@ -8,10 +8,11 @@ class GameDetailDAO {
   String description = "";
   String user = username;
   String genre = "";
+  String image = "";
   double rating = 0;
   double userRating = 0;
   bool isFavourite = false;
-  GameDetailState? state = null;
+  GameDetailState? state;
 
   final firebaseDAO = FirebaseDAO();
 
@@ -26,6 +27,7 @@ class GameDetailDAO {
     description = snapshot.description!;
     genre = snapshot.genre!;
     rating = snapshot.rating!.toDouble();
+    image = snapshot.img!;
 
     final userRatingSnapshot = await firebaseDAO.getRating(user, title);
     userRating = userRatingSnapshot.toDouble();
@@ -33,22 +35,16 @@ class GameDetailDAO {
     final isFavouriteSnapshot = await firebaseDAO.isFav(user, title);
     isFavourite = isFavouriteSnapshot;
 
-    print('Description: ${snapshot.description}');
-    print('Genre: ${snapshot.genre}');
-    print('Rating: ${snapshot.rating}');
-
     state = GameDetailState(
       title: title,
       description: description,
       genre: getGenreFromString(genre),
       imageUrls: [
-        'https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcT76dKDbC5K-E7hOfDx6Iq2R0omeb2lI6orSIr0U214DFJZ5noCdILi9CurX5n2b9Tr',
-        'https://cdn.britannica.com/71/234471-050-093F4211/shiba-inu-dog-in-the-snow.jpg',
-        'https://preview.redd.it/rc36dac8b5hz.jpg?auto=webp&s=52a8807c67a00edf79128d1e12d4d791de569321',
+        image
       ],
       rating: rating,
-      userRating: 0.0,
-      addedToFavourites: true,
+      userRating: userRating,
+      addedToFavourites: isFavourite,
     );
   }
 
